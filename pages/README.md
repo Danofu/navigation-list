@@ -1,0 +1,1 @@
+This folder exists to prevent Next.js from treating `src/pages` as the Pages Router. In this project, `src/pages` will be used as the Pages layer within the [Feature-Sliced Design](https://feature-sliced.design) architecture.
