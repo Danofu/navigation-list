@@ -4,7 +4,7 @@
     min-h-screen;
 }
 
-.rootContainer {
+.root-container {
   @apply
     max-w-screen-2xl
     m-auto
