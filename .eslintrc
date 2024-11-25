@@ -3,5 +3,80 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@stylistic"]
+  "plugins": ["@stylistic"],
+  "rules": {
+    "@stylistic/member-delimiter-style": "error",
+    "@stylistic/object-curly-newline": ["error", { "consistent": true, "multiline": true }],
+    "@stylistic/quote-props": ["error", "consistent-as-needed",
+      {
+        "keywords": false,
+        "numbers": false,
+        "unnecessary": true
+      }
+    ],
+    "@stylistic/comma-dangle": ["error",
+      {
+        "arrays": "always-multiline",
+        "enums": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline",
+        "generics": "only-multiline",
+        "imports": "always-multiline",
+        "objects": "always-multiline",
+        "tuples": "always-multiline"
+      }
+    ],
+
+    "import/order": ["error",
+      {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
+        "named": true,
+        "newlines-between": "always",
+        "distinctGroup": false,
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index", "unknown"],
+          "object"
+        ],
+        "pathGroups": [
+          { "group": "external", "pattern": "react", "position": "before" },
+          { "group": "internal", "pattern": "./*.module.css", "position": "after" }
+        ],
+        "pathGroupsExcludedImportTypes": []
+      }
+    ],
+
+    "max-len": ["error", 120, 2,
+      {
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true
+      }
+    ],
+    "no-restricted-exports": ["error", {
+      "restrictedNamedExports": [
+        "then"
+      ]
+    }],
+
+    "react/jsx-props-no-spreading": ["error",
+      {
+        "html": "enforce",
+        "custom": "enforce",
+        "explicitSpread": "ignore",
+        "exceptions": []
+      }
+    ],
+
+    "@typescript-eslint/comma-dangle": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "object-curly-newline": "off",
+    "quote-props": "off"
+  }
 }
