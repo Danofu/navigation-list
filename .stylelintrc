@@ -1,3 +1,31 @@
 {
-  "extends": "@wordpress/stylelint-config/stylistic"
+  "extends": "@wordpress/stylelint-config/stylistic",
+  "rules": {
+    "@stylistic/indentation": 2,
+
+    "at-rule-empty-line-before": ["always",
+      {
+        "except": ["blockless-after-blockless"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["apply"]
+      }
+    ],
+    "at-rule-no-unknown": [true,
+      {
+        "ignoreAtRules": [
+          "apply",
+          "config",
+          "layer",
+          "tailwind"
+        ]
+      }
+    ],
+    "function-no-unknown": [true,
+      {
+        "ignoreFunctions": [
+          "theme"
+        ]
+      }
+    ]
+  }
 }
