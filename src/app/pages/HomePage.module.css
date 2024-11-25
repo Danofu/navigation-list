@@ -1,0 +1,12 @@
+.root {
+  @apply
+    min-w-full
+    min-h-screen;
+}
+
+.rootContainer {
+  @apply
+    max-w-screen-2xl
+    m-auto
+    p-4;
+}
