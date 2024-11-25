@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types": "tsc --noEmit --pretty",
+    "stylelint": "stylelint ./src/**/*.css",
+    "check": "yarn lint && yarn types && yarn stylelint"
   },
   "dependencies": {
     "next": "15.0.3",
