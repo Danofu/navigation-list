@@ -17,4 +17,6 @@
   --button-primary-border-hover: 258 54% 52%;
 
   --ring: 260 77% 70%;
+
+  @apply font-inter;
 }

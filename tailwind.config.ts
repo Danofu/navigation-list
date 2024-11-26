@@ -27,6 +27,9 @@ export default {
         },
         'ring': 'hsl(var(--ring))',
       },
+      fontFamily: {
+        inter: 'var(--font-inter)',
+      },
     },
   },
   plugins: [],
