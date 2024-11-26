@@ -2,11 +2,11 @@ import React from 'react';
 
 import Button from '@/shared/ui/Button';
 import PlusCircleIcon from '@/shared/ui/icons/PlusCircleIcon';
-import styles from './HomePage.module.css';
+import styles from './LinksPage.module.css';
 
 const empty: boolean = true;
 
-function HomePage(): React.ReactElement {
+function LinksPage(): React.ReactElement {
   return (
     <div className={styles.root}>
       {empty && (
@@ -23,4 +23,4 @@ function HomePage(): React.ReactElement {
   );
 }
 
-export default HomePage;
+export default LinksPage;
