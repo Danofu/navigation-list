@@ -1,0 +1,43 @@
+.base {
+  @apply
+    inline-flex
+    justify-start
+    items-center
+    gap-1
+
+    rounded-lg
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
+
+    text-sm
+    font-semibold
+    whitespace-nowrap
+
+    transition-colors
+    duration-200
+    ease-linear
+
+    focus-visible:outline-none
+    focus-visible:ring-4
+    focus-visible:ring-ring/[0.24];
+}
+
+.variant-primary {
+  @apply
+    bg-button-primary
+    border
+    border-solid
+    border-button-primary-border
+
+    text-button-primary-foreground
+
+
+    hover:bg-button-primary-background-hover
+    hover:border-button-primary-border-hover;
+}
+
+.size-md {
+  @apply
+    px-3.5
+    py-2.5;
+}

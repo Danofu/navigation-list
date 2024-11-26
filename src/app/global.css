@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --button-primary-foreground: 0 0% 100%;
+  --button-primary-background: 259 63% 59%;
+  --button-primary-background-hover: 258 54% 52%;
+  --button-primary-border: 259 63% 59%;
+  --button-primary-border-hover: 258 54% 52%;
+
+  --ring: 260 77% 70%;
+}

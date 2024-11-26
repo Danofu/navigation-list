@@ -7,7 +7,16 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        'button-primary': {
+          'foreground': 'hsl(var(--button-primary-foreground))',
+          'DEFAULT': 'hsl(var(--button-primary-background))',
+          'background-hover': 'hsl(var(--button-primary-background-hover))',
+          'border': 'hsl(var(--button-primary-border))',
+          'border-hover': 'hsl(var(--button-primary-border-hover))',
+        },
+        'ring': 'hsl(var(--ring))',
+      },
     },
   },
   plugins: [],
