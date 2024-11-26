@@ -66,7 +66,7 @@
 
     "react/jsx-props-no-spreading": ["error",
       {
-        "html": "enforce",
+        "html": "ignore",
         "custom": "enforce",
         "explicitSpread": "ignore",
         "exceptions": []
@@ -75,6 +75,7 @@
 
     "@typescript-eslint/comma-dangle": "off",
     "import/prefer-default-export": "off",
+    "react/button-has-type": "off",
     "react/require-default-props": "off",
     "object-curly-newline": "off",
     "quote-props": "off"
