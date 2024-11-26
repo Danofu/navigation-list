@@ -1,6 +1,6 @@
 import { createStore } from 'zustand/vanilla';
 
-import createLinkSlice, { LinkState, LinkStore } from '@/entities/Link/model/slice';
+import { createLinkSlice, LinkState, LinkStore } from '@/entities/Link';
 
 type RootState = LinkState;
 type RootStore = LinkStore;
