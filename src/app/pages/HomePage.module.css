@@ -1,11 +1,5 @@
 .root {
   @apply
-    min-w-full
-    min-h-screen;
-}
-
-.root-container {
-  @apply
     flex
     flex-col
     justify-start

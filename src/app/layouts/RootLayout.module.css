@@ -1,0 +1,5 @@
+.root {
+  @apply
+    w-full
+    min-h-screen;
+}
