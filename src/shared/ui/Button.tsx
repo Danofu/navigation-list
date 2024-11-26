@@ -9,10 +9,13 @@ const variants = cva(
   {
     variants: {
       variant: {
-        primary: styles['variant-primary'],
+        'primary': styles['variant-primary'],
+        'tertiary-gray': styles['variant-tertiary-gray'],
       },
       size: {
-        md: styles['size-md'],
+        'md': styles['size-md'],
+
+        'md-icon': styles['size-md-icon'],
       },
     },
     defaultVariants: {

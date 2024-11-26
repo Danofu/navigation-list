@@ -1,0 +1,11 @@
+.root {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-stretch
+    max-w-screen-2xl
+    min-h-screen
+    m-auto
+    p-4;
+}

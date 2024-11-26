@@ -3,18 +3,25 @@
 @tailwind utilities;
 
 :root {
+  --background-primary: 0 0% 100%;
   --background-secondary: 210 20% 98%;
 
+  --border-primary: 217 16% 84%;
   --border-secondary: 220 17% 93%;
 
   --text-primary: 220 43% 11%;
+  --text-secondary: 217 24% 27%;
   --text-tertiary: 216 18% 34%;
 
   --button-primary-foreground: 0 0% 100%;
+  --button-primary-foreground-hover: 0 0% 100%;
   --button-primary-background: 259 63% 59%;
   --button-primary-background-hover: 258 54% 52%;
   --button-primary-border: 259 63% 59%;
   --button-primary-border-hover: 258 54% 52%;
+  --button-tertiary-gray-foreground: 216 18% 34%;
+  --button-tertiary-gray-background-hover: 210 20% 98%;
+  --button-tertiary-gray-foreground-hover: 217 24% 27%;
 
   --ring: 260 77% 70%;
 

@@ -1,0 +1,33 @@
+.container {
+  @apply
+    border
+    border-solid
+    border-border-secondary
+    rounded-lg
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
+
+    overflow-hidden
+
+    divide-x
+    divide-solid
+    divide-border-secondary
+
+
+    *:px-4
+    *:py-2
+
+    *:bg-transparent
+    *:border-0
+    *:rounded-none
+    *:shadow-none
+
+    *:text-sm
+    *:text-button-tertiary-gray-foreground
+    *:font-semibold
+
+
+    [&>*:hover]:bg-button-tertiary-gray-background-hover
+
+    [&>*:hover]:hover:text-button-tertiary-gray-foreground-hover;
+}

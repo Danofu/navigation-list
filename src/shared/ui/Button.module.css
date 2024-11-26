@@ -6,8 +6,6 @@
     gap-1
 
     rounded-lg
-    shadow-sm
-    shadow-[hsla(220,_43%,_11%,_0.05)]
 
     text-sm
     font-semibold
@@ -15,11 +13,7 @@
 
     transition-colors
     duration-200
-    ease-linear
-
-    focus-visible:outline-none
-    focus-visible:ring-4
-    focus-visible:ring-ring/[0.24];
+    ease-linear;
 }
 
 .variant-primary {
@@ -28,16 +22,39 @@
     border
     border-solid
     border-button-primary-border
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
 
     text-button-primary-foreground
 
 
     hover:bg-button-primary-background-hover
-    hover:border-button-primary-border-hover;
+    hover:border-button-primary-border-hover
+
+    hover:text-button-primary-foreground-hover
+
+
+    focus-visible:outline-none
+    focus-visible:ring-4
+    focus-visible:ring-ring/[0.24];
+}
+
+.variant-tertiary-gray {
+  @apply
+    text-button-tertiary-gray-foreground
+
+
+    hover:bg-button-tertiary-gray-background-hover
+
+    hover:text-button-tertiary-gray-foreground-hover;
 }
 
 .size-md {
   @apply
     px-3.5
     py-2.5;
+}
+
+.size-md-icon {
+  @apply p-2.5;
 }

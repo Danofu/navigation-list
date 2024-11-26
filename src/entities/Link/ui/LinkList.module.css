@@ -1,0 +1,18 @@
+.container {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-stretch
+
+    border
+    border-solid
+    border-border
+    rounded-lg
+
+    overflow-hidden
+
+    divide-y
+    divide-solid
+    divide-border-secondary;
+}

@@ -1,0 +1,69 @@
+.container {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-stretch
+
+    bg-background-secondary;
+}
+
+.link-container {
+  @apply
+    flex
+    flex-row
+    justify-start
+    items-center
+    gap-1
+    px-6
+    py-4
+
+    bg-background
+    border-solid
+    border-border-secondary
+
+    [&:not(:only-child)]:border-b
+
+    [&]:only:-mb-px;
+}
+
+.move-button {
+  @apply cursor-move;
+}
+
+.link-info {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-start
+    gap-1.5;
+}
+
+.link-label {
+  @apply
+    text-sm
+    text-text
+    font-semibold;
+}
+
+.link-url {
+  @apply
+    text-sm
+    text-text-tertiary
+    font-normal;
+}
+
+.actions {
+  @apply ml-auto;
+}
+
+.sub-link {
+  @apply
+    ml-16
+
+
+    [&>.link-container]:border-b
+    [&>.link-container]:border-l
+    [&>.link-container]:rounded-bl-lg;
+}
