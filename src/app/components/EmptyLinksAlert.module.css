@@ -1,0 +1,39 @@
+.container {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-center
+    my-auto
+    py-6
+    px-4
+
+    bg-background-secondary
+    border
+    border-solid
+    border-border-secondary
+    rounded-lg
+
+    text-center;
+}
+
+.title {
+  @apply
+    text-base
+    text-text
+    font-semibold;
+}
+
+.description {
+  @apply
+    mt-1
+
+    text-sm
+    text-text-tertiary
+    font-normal;
+}
+
+.add-button {
+  @apply
+    mt-6;
+}

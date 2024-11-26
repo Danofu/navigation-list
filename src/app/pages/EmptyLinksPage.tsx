@@ -1,27 +1,16 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
+'use client';
 
-import Button from '@/shared/ui/Button';
-import PlusCircleIcon from '@/shared/ui/icons/PlusCircleIcon';
+import React from 'react';
+
+import EmptyLinksAlert from '@/app/components/EmptyLinksAlert';
+import { useStore } from '@/app/providers/StoreProvider';
 import styles from './EmptyLinksPage.module.css';
 
-const empty: boolean = false;
-
-function EmptyLinksPage(): React.ReactElement {
-  if (!empty) {
-    redirect('/links');
-  }
-
+function EmptyLinksPage(): React.ReactElement | null {
+  const empty = useStore(({ links }) => links.length === 0);
   return (
     <div className={styles.root}>
-      <div className={styles['empty-container']}>
-        <span className={styles['empty-title']}>Menu jest puste</span>
-        <span className={styles['empty-description']}>W tym menu nie ma jeszcze żadnych linków.</span>
-        <Button className={styles['empty-add-button']}>
-          <PlusCircleIcon />
-          Dodaj pozycję menu
-        </Button>
-      </div>
+      <EmptyLinksAlert empty={empty} />
     </div>
   );
 }

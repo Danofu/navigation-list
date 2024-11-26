@@ -1,12 +1,19 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
+'use client';
 
-const empty: boolean = false;
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { useStore } from '@/app/providers/StoreProvider';
 
 function LinksPage(): React.ReactElement | null {
-  if (empty) {
-    redirect('/links/empty');
-  }
+  const router = useRouter();
+  const empty = useStore(({ links }) => links.length === 0);
+
+  useEffect(() => {
+    if (empty) {
+      router.replace('/links/empty');
+    }
+  }, [empty, router]);
 
   return null;
 }
