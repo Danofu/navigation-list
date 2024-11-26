@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 :root {
+  --background-secondary: 210 20% 98%;
+
+  --border-secondary: 220 17% 93%;
+
+  --text-primary: 220 43% 11%;
+  --text-tertiary: 216 18% 34%;
+
   --button-primary-foreground: 0 0% 100%;
   --button-primary-background: 259 63% 59%;
   --button-primary-background-hover: 258 54% 52%;
