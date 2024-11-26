@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Książka Nawigacji',
+  title: 'Menu',
 };
 
 export { default } from '@/app/pages/LinksPage';

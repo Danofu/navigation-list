@@ -5,7 +5,7 @@ import Button from '@/shared/ui/Button';
 import PlusCircleIcon from '@/shared/ui/icons/PlusCircleIcon';
 import styles from './EmptyLinksPage.module.css';
 
-const empty: boolean = true;
+const empty: boolean = false;
 
 function EmptyLinksPage(): React.ReactElement {
   if (!empty) {
