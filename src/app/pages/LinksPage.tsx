@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useShallow } from 'zustand/react/shallow';
 
 import { useStore } from '@/app/providers/StoreProvider';
+import pages from '@/shared/routes/pages';
 
 function LinksPage(): React.ReactElement | null {
   const router = useRouter();
@@ -12,7 +13,7 @@ function LinksPage(): React.ReactElement | null {
 
   useEffect(() => {
     if (empty) {
-      router.replace('/links/empty');
+      router.replace(pages.emptyLinks);
     }
   }, [empty, router]);
 

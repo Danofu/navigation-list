@@ -1,6 +1,7 @@
 import React from 'react';
 import { redirect, RedirectType } from 'next/navigation';
 
+import pages from '@/shared/routes/pages';
 import Button from '@/shared/ui/Button';
 import PlusCircleIcon from '@/shared/ui/icons/PlusCircleIcon';
 import styles from './EmptyLinksAlert.module.css';
@@ -11,7 +12,7 @@ type Props = Readonly<{
 
 function EmptyLinksAlert({ empty }: Props): React.ReactElement {
   if (!empty) {
-    redirect('/links', RedirectType.replace);
+    redirect(pages.links, RedirectType.replace);
   }
 
   return (
