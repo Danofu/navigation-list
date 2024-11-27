@@ -1,7 +1,8 @@
 interface Link {
+  id: string;
   label: string;
   url?: string | undefined;
-  link?: Link | undefined;
+  subLink?: Link | undefined;
 }
 
 export default Link;

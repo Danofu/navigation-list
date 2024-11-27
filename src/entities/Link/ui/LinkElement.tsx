@@ -29,7 +29,7 @@ function LinkElement({ className, link }: Props): React.ReactElement {
           <Button>Dodaj pozycję menu</Button>
         </ButtonGroup>
       </div>
-      {link.link && <LinkElement className={styles['sub-link']} link={link.link} />}
+      {link.subLink && <LinkElement className={styles['sub-link']} link={link.subLink} />}
     </div>
   );
 }

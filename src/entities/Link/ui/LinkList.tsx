@@ -17,7 +17,7 @@ function LinkList({ links }: Props): React.ReactElement | null {
 
   return (
     <div className={styles.container}>
-      {links.map((link) => <LinkElement key={Math.random()} link={link} />)}
+      {links.map((link) => <LinkElement key={link.id} link={link} />)}
     </div>
   );
 }
