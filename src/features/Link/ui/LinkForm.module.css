@@ -1,0 +1,30 @@
+.container {
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-stretch
+    my-auto
+    px-6
+    py-5
+
+    bg-background
+    border
+    border-solid
+    border-border
+    rounded-lg;
+}
+
+.link-text-field {
+  @apply mt-2;
+}
+
+.actions {
+  @apply
+    flex
+    flex-row
+    justify-start
+    items-center
+    gap-2
+    mt-5;
+}

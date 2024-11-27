@@ -1,0 +1,78 @@
+.base {
+  --border-color: hsl(var(--border-primary));
+  --tw-ring-color: hsl(var(--ring) / 0.24);
+
+  @apply
+    relative
+    w-full
+    px-[var(--scale-px)]
+    py-[var(--scale-py)]
+
+    bg-background
+    border
+    border-solid
+    border-[var(--border-color)]
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
+    rounded-lg
+
+
+    has-[:focus-visible]:ring-4;
+}
+
+.destructive {
+  --border-color: hsl(var(--border-error));
+  --tw-ring-color: hsl(var(--ring-error) / 0.24);
+}
+
+.scale-sm {
+  --scale-px: 0.75rem;
+  --scale-py: 0.5rem;
+}
+
+.base.scale-sm:has(> .start-adornment) {
+  --adornment-offset: 0.75rem;
+  --scale-px: 2.5rem;
+}
+
+.scale-md {
+  --scale-px: 0.875rem;
+  --scale-py: 0.625rem;
+}
+
+.base.scale-md:has(> .start-adornment) {
+  --adornment-offset: 0.75rem;
+  --scale-px: 2.625rem;
+}
+
+.start-adornment {
+  @apply
+    absolute
+    top-1/2
+    left-[var(--adornment-offset)]
+    flex
+    justify-center
+    items-center
+    size-5
+
+    -translate-y-1/2
+
+
+    [&>svg]:w-full
+    [&>svg]:h-auto
+
+    [&>svg]:text-text-quaternary;
+}
+
+.input {
+  @apply
+    w-full
+
+    text-base
+    text-text
+    font-normal
+
+    placeholder:text-text-placeholder
+
+    focus-visible:outline-none;
+}

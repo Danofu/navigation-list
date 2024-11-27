@@ -10,6 +10,8 @@ const variants = cva(
     variants: {
       variant: {
         'primary': styles['variant-primary'],
+        'secondary': styles['variant-secondary'],
+        'secondary-gray': styles['variant-secondary-gray'],
         'tertiary-gray': styles['variant-tertiary-gray'],
       },
       size: {

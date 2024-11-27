@@ -8,10 +8,14 @@
 
   --border-primary: 217 16% 84%;
   --border-secondary: 220 17% 93%;
+  --border-error: 4 96% 80%;
 
   --text-primary: 220 43% 11%;
   --text-secondary: 217 24% 27%;
   --text-tertiary: 216 18% 34%;
+  --text-quaternary: 221 13% 46%;
+  --text-placeholder: 221 13% 46%;
+  --text-error-primary: 4 74% 49%;
 
   --button-primary-foreground: 0 0% 100%;
   --button-primary-foreground-hover: 0 0% 100%;
@@ -19,11 +23,25 @@
   --button-primary-background-hover: 258 54% 52%;
   --button-primary-border: 259 63% 59%;
   --button-primary-border-hover: 258 54% 52%;
+  --button-secondary-foreground: 258 54% 52%;
+  --button-secondary-foreground-hover: 256 48% 42%;
+  --button-secondary-background: 0 0% 100%;
+  --button-secondary-background-hover: 264 100% 98%;
+  --button-secondary-border: 265 89% 86%;
+  --button-secondary-border-hover: 265 89% 86%;
+  --button-secondary-gray-foreground: 217 24% 27%;
+  --button-secondary-gray-foreground-hover: 216 32% 14%;
+  --button-secondary-gray-background: 0 0% 100%;
+  --button-secondary-gray-background-hover: 210 20% 98%;
+  --button-secondary-gray-border: 217 16% 84%;
+  --button-secondary-gray-border-hover: 217 16% 84%;
   --button-tertiary-gray-foreground: 216 18% 34%;
   --button-tertiary-gray-background-hover: 210 20% 98%;
   --button-tertiary-gray-foreground-hover: 217 24% 27%;
 
   --ring: 260 77% 70%;
+  --ring-gray: 218 15% 65%;
+  --ring-error: 4 86% 58%;
 
   @apply font-inter;
 }

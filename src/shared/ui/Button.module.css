@@ -39,6 +39,50 @@
     focus-visible:ring-ring/[0.24];
 }
 
+.variant-secondary {
+  @apply
+    bg-button-secondary
+    border
+    border-solid
+    border-button-secondary-border
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
+
+    text-button-secondary-foreground
+
+
+    hover:bg-button-secondary-background-hover
+    hover:border-button-secondary-border-hover
+
+    hover:text-button-secondary-foreground-hover
+
+    focus-visible:outline-none
+    focus-visible:ring-4
+    focus-visible:ring-ring/[0.14];
+}
+
+.variant-secondary-gray {
+  @apply
+    bg-button-secondary-gray
+    border
+    border-solid
+    border-button-secondary-gray-border
+    shadow-sm
+    shadow-[hsla(220,_43%,_11%,_0.05)]
+
+    text-button-secondary-gray-foreground
+
+
+    hover:bg-button-secondary-gray-background-hover
+    hover:border-button-secondary-gray-border-hover
+
+    hover:text-button-secondary-gray-foreground-hover
+
+    focus-visible:outline-none
+    focus-visible:ring-4
+    focus-visible:ring-ring-gray/[0.14];
+}
+
 .variant-tertiary-gray {
   @apply
     text-button-tertiary-gray-foreground

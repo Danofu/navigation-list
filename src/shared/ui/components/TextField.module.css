@@ -1,0 +1,31 @@
+.container {
+  --helper-text-color: hsl(var(--text-tertiary));
+
+  @apply
+    flex
+    flex-col
+    justify-start
+    items-stretch;
+}
+
+.container-error {
+  --helper-text-color: hsl(var(--text-error-primary));
+}
+
+.label {
+  @apply
+    mb-1.5
+
+    text-base
+    text-text-secondary
+    font-medium;
+}
+
+.helper-text {
+  @apply
+    mt-1.5
+
+    text-base
+    text-[var(--helper-text-color)]
+    font-normal;
+}
