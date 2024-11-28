@@ -1,4 +1,5 @@
 import React from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/shared/ui/lib/utils';
@@ -27,10 +28,19 @@ const variants = cva(
   },
 );
 
-type Props = Readonly<React.ComponentProps<'button'> & VariantProps<typeof variants>>;
+type Props = Readonly<
+  React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof variants> &
+  { asChild?: boolean }
+>;
 
-function Button({ children, className, size, type = 'button', variant, ...props }: Props): React.ReactElement {
-  return <button className={cn(variants({ className, size, variant }))} type={type} {...props}>{children}</button>;
+function Button({ asChild, children, className, size, type = 'button', variant, ...props }: Props): React.ReactElement {
+  const ButtonComponent = asChild ? Slot : 'button';
+  return (
+    <ButtonComponent className={cn(variants({ className, size, variant }))} type={type} {...props}>
+      {children}
+    </ButtonComponent>
+  );
 }
 
 export { type Props, variants };

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { redirect, RedirectType } from 'next/navigation';
 
 import pages from '@/shared/routes/pages';
@@ -19,9 +20,11 @@ function EmptyLinksAlert({ empty }: Props): React.ReactElement {
     <div className={styles.container}>
       <span className={styles.title}>Menu jest puste</span>
       <span className={styles.description}>W tym menu nie ma jeszcze żadnych linków.</span>
-      <Button className={styles['add-button']}>
-        <PlusCircleIcon />
-        Dodaj pozycję menu
+      <Button asChild className={styles['add-button']}>
+        <Link href={pages.addLink}>
+          <PlusCircleIcon />
+          Dodaj pozycję menu
+        </Link>
       </Button>
     </div>
   );
