@@ -1,9 +1,10 @@
 import { createStore } from 'zustand/vanilla';
 
-import { createLinkSlice, LinkState, LinkStore } from '@/entities/Link';
+import { LinkState } from '@/entities/Link';
+import { createLinkActions, LinkActions } from '@/features/Link';
 
 type RootState = LinkState;
-type RootStore = LinkStore;
+type RootStore = RootState & LinkActions;
 
 const defaultInitState: RootState = {
   links: [],
@@ -11,7 +12,7 @@ const defaultInitState: RootState = {
 
 const createRootStore = (initState = defaultInitState) => (
   createStore<RootStore>()((...args) => ({
-    ...createLinkSlice(...args),
+    ...createLinkActions(...args),
     ...initState,
   }))
 );
