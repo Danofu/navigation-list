@@ -5,6 +5,7 @@
   },
   "plugins": ["@stylistic"],
   "rules": {
+    "@stylistic/indent": ["error", 2],
     "@stylistic/member-delimiter-style": "error",
     "@stylistic/object-curly-newline": ["error", { "consistent": true, "multiline": true }],
     "@stylistic/quote-props": ["error", "consistent-as-needed",
@@ -69,11 +70,15 @@
         "html": "ignore",
         "custom": "enforce",
         "explicitSpread": "ignore",
-        "exceptions": ["Input"]
+        "exceptions": [
+          "ButtonComponent",
+          "Input"
+        ]
       }
     ],
 
     "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/indent": "off",
     "import/prefer-default-export": "off",
     "react/button-has-type": "off",
     "react/require-default-props": "off",
