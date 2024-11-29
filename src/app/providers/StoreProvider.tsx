@@ -17,7 +17,7 @@ function StoreProvider({ children }: Props): React.ReactElement {
   const [store, setStore] = useState<RootStoreApi>(createRootStore());
 
   useEffect(() => {
-    const rawLinks = localStorage.getItem('links') || 'NULL';
+    const rawLinks = localStorage.getItem('links') || 'null';
     const { data: links = [] } = linksDecoder().safeParse(JSON.parse(rawLinks));
     setStore(createRootStore({ links }));
   }, []);
