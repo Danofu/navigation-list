@@ -1,13 +1,14 @@
 import { v4 as uuid } from 'uuid';
 import { StateCreator } from 'zustand/index';
 
-import { LinkState } from '@/entities/Link';
+import { linksDecoder, LinkState } from '@/entities/Link';
 
 type Link = LinkState['links'][number];
 
 type LinkActions = {
   addLink: (label: string, url?: string, parentId?: string) => void;
   updateLink: (id: string, updater: (link: Link) => Link) => void;
+  deleteLink: (id: string) => void;
 };
 
 const createLinkActions: StateCreator<LinkState & LinkActions, [], [], LinkActions> = (set) => ({
@@ -49,6 +50,31 @@ const createLinkActions: StateCreator<LinkState & LinkActions, [], [], LinkActio
     localStorage.setItem('links', JSON.stringify(updatedLinks));
 
     return { links: updatedLinks };
+  }),
+  deleteLink: (id) => set((state) => {
+    const recursivelyDeleteLink = (links: Array<Link>): Array<Link | undefined> => (
+      links
+        .map((link) => {
+          if (link.id === id) {
+            return link.subLink;
+          }
+          if (link.subLink) {
+            return { ...link, subLink: recursivelyDeleteLink([link.subLink])[0] };
+          }
+          return link;
+        })
+        .filter(Boolean)
+    );
+
+    const updatedLinks = recursivelyDeleteLink(state.links);
+    const { data: parsedLinks, success } = linksDecoder().safeParse(updatedLinks);
+    if (!success) {
+      return {};
+    }
+
+    localStorage.setItem('links', JSON.stringify(parsedLinks));
+
+    return { links: parsedLinks };
   }),
 });
 

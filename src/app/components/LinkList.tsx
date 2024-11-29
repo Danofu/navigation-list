@@ -10,29 +10,31 @@ import styles from './LinkList.module.css';
 
 type Link = RootStore['links'][number];
 type LinkUpdateAction = RootStore['updateLink'];
+type LinkDeleteAction = RootStore['deleteLink'];
 
 type Props = Readonly<{
+  deleteItem: LinkDeleteAction;
   items: Array<Link>;
-  update: LinkUpdateAction;
+  updateItem: LinkUpdateAction;
 }>;
 
-function LinkList({ items, update }: Props): React.ReactElement {
+function LinkList({ deleteItem, items, updateItem }: Props): React.ReactElement {
   if (items.length === 0) {
     redirect(pages.emptyLinks, RedirectType.replace);
   }
 
   const addSubLinkHandler = (id: string) => (): void => (
-    update(id, (link) => ({ ...link, status: LinkStatus.ADDING_SUB_LINK }))
+    updateItem(id, (link) => ({ ...link, status: LinkStatus.ADDING_SUB_LINK }))
   );
 
   const editLinkHandler = (id: string) => (): void => (
-    update(id, (link) => ({ ...link, status: LinkStatus.EDITING }))
+    updateItem(id, (link) => ({ ...link, status: LinkStatus.EDITING }))
   );
 
-  const deleteLinkHandler = (): void => {};
+  const deleteLinkHandler = (id: string) => (): void => deleteItem(id);
 
   const linkFormSubmitHandler = (id: string) => (values: LinkFormValues): void => (
-    update(id, (link) => {
+    updateItem(id, (link) => {
       if (link.status === 'ADDING_SUB_LINK') {
         return {
           ...link,
@@ -48,14 +50,14 @@ function LinkList({ items, update }: Props): React.ReactElement {
   );
 
   const linkFormCancelHandler = (id: string) => (): void => (
-    update(id, (link) => ({ ...link, status: undefined }))
+    updateItem(id, (link) => ({ ...link, status: undefined }))
   );
 
   const linkElementActionsWithId = (linkId: string): React.ReactElement => (
     <LinkElementActions
       className={styles['link-element-actions']}
       onAddSubLink={addSubLinkHandler(linkId)}
-      onDelete={deleteLinkHandler}
+      onDelete={deleteLinkHandler(linkId)}
       onEdit={editLinkHandler(linkId)}
     />
   );
