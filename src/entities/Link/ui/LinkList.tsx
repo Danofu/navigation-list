@@ -8,9 +8,10 @@ import styles from './LinkList.module.css';
 
 type Props = Readonly<{
   links: Array<LinkEntity>;
+  listActions: React.ReactNode;
 }>;
 
-function LinkList({ links }: Props): React.ReactElement | null {
+function LinkList({ links, listActions }: Props): React.ReactElement {
   if (links.length === 0) {
     redirect(pages.emptyLinks, RedirectType.replace);
   }
@@ -18,6 +19,7 @@ function LinkList({ links }: Props): React.ReactElement | null {
   return (
     <div className={styles.container}>
       {links.map((link) => <LinkElement key={link.id} link={link} />)}
+      {listActions}
     </div>
   );
 }
