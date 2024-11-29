@@ -2,13 +2,18 @@
 
 import React from 'react';
 
-import { LinkForm } from '@/features/Link';
+import { useStore } from '@/app/providers/StoreProvider';
+import { LinkForm, LinkFormValues } from '@/features/Link';
 import styles from './AddLinkPage.module.css';
 
-function AddLinkPage(): React.ReactElement | null {
+function AddLinkPage(): React.ReactElement {
+  const addLink = useStore((store) => store.addLink);
+
+  const handleSubmit = (values: LinkFormValues): void => addLink(values.name, values.url);
+
   return (
     <div className={styles.root}>
-      <LinkForm />
+      <LinkForm onSubmit={handleSubmit} />
     </div>
   );
 }
