@@ -72,7 +72,8 @@
         "explicitSpread": "ignore",
         "exceptions": [
           "ButtonComponent",
-          "Input"
+          "Input",
+          "TextField"
         ]
       }
     ],
