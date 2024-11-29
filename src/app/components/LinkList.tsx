@@ -3,7 +3,7 @@ import { redirect, RedirectType } from 'next/navigation';
 
 import { RootStore } from '@/app/store';
 import { LinkElement, LinkStatus } from '@/entities/Link';
-import { LinkElementActions, LinkListActions } from '@/features/Link';
+import { LinkElementActions, LinkForm, LinkFormValues, LinkListActions } from '@/features/Link';
 import pages from '@/shared/routes/pages';
 import styles from './LinkList.module.css';
 
@@ -30,6 +30,14 @@ function LinkList({ items, update }: Props): React.ReactElement {
 
   const deleteLinkHandler = (): void => {};
 
+  const linkFormSubmitHandler = (id: string) => (values: LinkFormValues): void => (
+    update(id, (link) => ({ ...link, label: values.name, url: values.url, status: undefined }))
+  );
+
+  const linkFormCancelHandler = (id: string) => (): void => (
+    update(id, (link) => ({ ...link, status: undefined }))
+  );
+
   return (
     <div className={styles.container}>
       {items.map((link) => (
@@ -44,6 +52,13 @@ function LinkList({ items, update }: Props): React.ReactElement {
           )}
           key={link.id}
           link={link}
+          linkForm={(
+            <LinkForm
+              initialValues={{ name: link.label, url: link.url || '' }}
+              onCancel={linkFormCancelHandler(link.id)}
+              onSubmit={linkFormSubmitHandler(link.id)}
+            />
+          )}
         />
       ))}
       <LinkListActions />

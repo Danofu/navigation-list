@@ -54,6 +54,12 @@
     font-normal;
 }
 
+.link-form {
+  @apply
+    px-6
+    py-4;
+}
+
 .sub-link {
   @apply
     ml-16

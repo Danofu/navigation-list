@@ -17,9 +17,13 @@ function AddLinkPage(): React.ReactElement {
     router.push(pages.links);
   };
 
+  const handleCancel = (): void => {
+    router.push(pages.links);
+  };
+
   return (
     <div className={styles.root}>
-      <LinkForm onSubmit={handleSubmit} />
+      <LinkForm onCancel={handleCancel} onSubmit={handleSubmit} />
     </div>
   );
 }

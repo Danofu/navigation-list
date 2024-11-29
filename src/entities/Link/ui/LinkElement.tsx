@@ -1,31 +1,40 @@
 import React from 'react';
 
-import LinkEntity from '@/entities/Link/model/Link';
+import { LinkStatus } from '@/entities/Link/model/Link';
+import { LinkState } from '@/entities/Link/model/slice';
 import Button from '@/shared/ui/Button';
 import MoveIcon from '@/shared/ui/icons/MoveIcon';
 import { cn } from '@/shared/ui/lib/utils';
 import styles from './LinkElement.module.css';
 
+type Link = LinkState['links'][number];
+
 type Props = Readonly<{
   actions: React.ReactNode;
   className?: string;
-  link: LinkEntity;
+  link: Link;
+  linkForm: React.ReactNode;
 }>;
 
-function LinkElement({ actions, className, link }: Props): React.ReactElement {
+function LinkElement({ actions, className, link, linkForm }: Props): React.ReactElement {
   return (
     <div className={cn(styles.container, className)}>
-      <div className={styles['link-container']}>
-        <Button className={styles['move-button']} size="md-icon" title="Przenieś" variant="tertiary-gray">
-          <MoveIcon />
-        </Button>
-        <div className={styles['link-info']}>
-          <span className={styles['link-label']}>{link.label}</span>
-          <span className={styles['link-url']}>{link.url}</span>
+      {link.status !== LinkStatus.EDITING && (
+        <div className={styles['link-container']}>
+          <Button className={styles['move-button']} size="md-icon" title="Przenieś" variant="tertiary-gray">
+            <MoveIcon />
+          </Button>
+          <div className={styles['link-info']}>
+            <span className={styles['link-label']}>{link.label}</span>
+            {link.url && <span className={styles['link-url']}>{link.url}</span>}
+          </div>
+          {actions}
         </div>
-        {actions}
-      </div>
-      {link.subLink && <LinkElement actions={actions} className={styles['sub-link']} link={link.subLink} />}
+      )}
+      {(link.status === LinkStatus.ADDING_SUB_LINK || link.status === LinkStatus.EDITING) && (
+        <div className={styles['link-form']}>{linkForm}</div>
+      )}
+      {link.subLink && <LinkElement actions={actions} className={styles['sub-link']} link={link.subLink} linkForm={linkForm} />}
     </div>
   );
 }
