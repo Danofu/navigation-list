@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
 import { linkFormSchema, LinkFormValues } from '@/features/Link/model/validation';
+import pages from '@/shared/routes/pages';
 import Button from '@/shared/ui/Button';
 import TextField from '@/shared/ui/components/TextField';
 import SearchLgIcon from '@/shared/ui/icons/SearchLgIcon';
@@ -31,7 +33,9 @@ function LinkForm({ initialValues = defaultValues, onSubmit }: Props): React.Rea
       <TextField error={!!errors.name} helperText={errors.name?.message} label="Nazwa" placeholder="np. Promocje" scale="sm" {...register('name')} />
       <TextField className={styles['link-text-field']} error={!!errors.url} helperText={errors.url?.message} label="Link" placeholder="Wklej lub wyszukaj" scale="sm" startAdornment={<SearchLgIcon />} {...register('url')} />
       <div className={styles.actions}>
-        <Button variant="secondary-gray">Anuluj</Button>
+        <Button asChild variant="secondary-gray">
+          <Link href={pages.links}>Anuluj</Link>
+        </Button>
         <Button type="submit" variant="secondary">Dodaj</Button>
       </div>
     </form>
