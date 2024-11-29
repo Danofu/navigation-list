@@ -1,7 +1,7 @@
-import Link from '@/entities/Link/model/Link';
+import Link, { LinkStatus } from '@/entities/Link/model/Link';
 
 type LinkState = {
-  links: Array<Link>;
+  links: Array<Link & { status?: LinkStatus }>;
 };
 
 export { type LinkState };

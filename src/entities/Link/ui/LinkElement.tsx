@@ -2,17 +2,17 @@ import React from 'react';
 
 import LinkEntity from '@/entities/Link/model/Link';
 import Button from '@/shared/ui/Button';
-import ButtonGroup from '@/shared/ui/ButtonGroup';
 import MoveIcon from '@/shared/ui/icons/MoveIcon';
 import { cn } from '@/shared/ui/lib/utils';
 import styles from './LinkElement.module.css';
 
 type Props = Readonly<{
+  actions: React.ReactNode;
   className?: string;
   link: LinkEntity;
 }>;
 
-function LinkElement({ className, link }: Props): React.ReactElement {
+function LinkElement({ actions, className, link }: Props): React.ReactElement {
   return (
     <div className={cn(styles.container, className)}>
       <div className={styles['link-container']}>
@@ -23,13 +23,9 @@ function LinkElement({ className, link }: Props): React.ReactElement {
           <span className={styles['link-label']}>{link.label}</span>
           <span className={styles['link-url']}>{link.url}</span>
         </div>
-        <ButtonGroup className={styles.actions}>
-          <Button>Usuń</Button>
-          <Button>Edytuj</Button>
-          <Button>Dodaj pozycję menu</Button>
-        </ButtonGroup>
+        {actions}
       </div>
-      {link.subLink && <LinkElement className={styles['sub-link']} link={link.subLink} />}
+      {link.subLink && <LinkElement actions={actions} className={styles['sub-link']} link={link.subLink} />}
     </div>
   );
 }

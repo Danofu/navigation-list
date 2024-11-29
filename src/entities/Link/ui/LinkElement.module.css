@@ -54,10 +54,6 @@
     font-normal;
 }
 
-.actions {
-  @apply ml-auto;
-}
-
 .sub-link {
   @apply
     ml-16

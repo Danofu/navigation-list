@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { StoreApi, useStore } from 'zustand';
 
 import createRootStore, { RootStore } from '@/app/store';
@@ -14,14 +14,16 @@ type Props = Readonly<{
 }>;
 
 function StoreProvider({ children }: Props): React.ReactElement {
-  const storeRef = useRef<RootStoreApi>();
-  if (!storeRef.current) {
-    const { data: links = [] } = linksDecoder().safeParse(JSON.parse(localStorage.getItem('links') || ''));
-    storeRef.current = createRootStore({ links });
-  }
+  const [store, setStore] = useState<RootStoreApi>(createRootStore());
+
+  useEffect(() => {
+    const rawLinks = localStorage.getItem('links') || 'NULL';
+    const { data: links = [] } = linksDecoder().safeParse(JSON.parse(rawLinks));
+    setStore(createRootStore({ links }));
+  }, []);
 
   return (
-    <StoreContext.Provider value={storeRef.current}>
+    <StoreContext.Provider value={store}>
       {children}
     </StoreContext.Provider>
   );

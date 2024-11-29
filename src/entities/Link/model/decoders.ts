@@ -1,12 +1,16 @@
-import { array, lazy, object, string } from 'zod';
+import { array, lazy, nativeEnum, object, string } from 'zod';
 
-import Link from '@/entities/Link/model/Link';
+import { LinkStatus } from '@/entities/Link/model/Link';
+import { LinkState } from '@/entities/Link/model/slice';
 import { Decoder } from '@/shared/lib/utility-types';
+
+type Link = LinkState['links'][number];
 
 const linkDecoder = (): Decoder<Link> => object({
   id: string().uuid(),
   label: string().min(1),
-  url: string().optional(),
+  status: nativeEnum(LinkStatus).optional(),
   subUrl: lazy(() => linkDecoder().optional()),
+  url: string().optional(),
 });
 export const linksDecoder = (): Decoder<Array<Link>> => array(linkDecoder());
