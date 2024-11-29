@@ -40,8 +40,7 @@ const createLinkActions: StateCreator<LinkState & LinkActions, [], [], LinkActio
         return updater(link);
       }
       if (link.subLink) {
-        const updatedLink = recursivelyUpdateLink([link])[0];
-        return updatedLink || link;
+        return { ...link, subLink: recursivelyUpdateLink([link.subLink])[0] };
       }
       return link;
     });

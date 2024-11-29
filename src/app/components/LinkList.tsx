@@ -1,5 +1,6 @@
 import React from 'react';
 import { redirect, RedirectType } from 'next/navigation';
+import { v4 as uuid } from 'uuid';
 
 import { RootStore } from '@/app/store';
 import { LinkElement, LinkStatus } from '@/entities/Link';
@@ -31,7 +32,15 @@ function LinkList({ items, update }: Props): React.ReactElement {
   const deleteLinkHandler = (): void => {};
 
   const linkFormSubmitHandler = (id: string) => (values: LinkFormValues): void => (
-    update(id, (link) => ({ ...link, label: values.name, url: values.url, status: undefined }))
+    update(id, (link) => {
+      if (link.status === 'ADDING_SUB_LINK') {
+        return { ...link, subLink: { id: uuid(), label: values.name, url: values.url, subLink: link.subLink }, status: undefined };
+      }
+      if (link.status === 'EDITING') {
+        return ({ ...link, label: values.name, url: values.url, status: undefined });
+      }
+      return link;
+    })
   );
 
   const linkFormCancelHandler = (id: string) => (): void => (
@@ -42,21 +51,21 @@ function LinkList({ items, update }: Props): React.ReactElement {
     <div className={styles.container}>
       {items.map((link) => (
         <LinkElement
-          actions={(
+          actions={(linkId) => (
             <LinkElementActions
               className={styles['link-element-actions']}
-              onAddSubLink={addSubLinkHandler(link.id)}
+              onAddSubLink={addSubLinkHandler(linkId)}
               onDelete={deleteLinkHandler}
-              onEdit={editLinkHandler(link.id)}
+              onEdit={editLinkHandler(linkId)}
             />
           )}
           key={link.id}
           link={link}
-          linkForm={(
+          linkForm={(linkId, name, url) => (
             <LinkForm
-              initialValues={{ name: link.label, url: link.url || '' }}
-              onCancel={linkFormCancelHandler(link.id)}
-              onSubmit={linkFormSubmitHandler(link.id)}
+              initialValues={{ name: name || '', url: url || '' }}
+              onCancel={linkFormCancelHandler(linkId)}
+              onSubmit={linkFormSubmitHandler(linkId)}
             />
           )}
         />

@@ -10,10 +10,10 @@ import styles from './LinkElement.module.css';
 type Link = LinkState['links'][number];
 
 type Props = Readonly<{
-  actions: React.ReactNode;
+  actions: (linkId: string) => React.ReactNode;
   className?: string;
   link: Link;
-  linkForm: React.ReactNode;
+  linkForm: (linkId: string, name?: string, url?: string) => React.ReactNode;
 }>;
 
 function LinkElement({ actions, className, link, linkForm }: Props): React.ReactElement {
@@ -28,12 +28,11 @@ function LinkElement({ actions, className, link, linkForm }: Props): React.React
             <span className={styles['link-label']}>{link.label}</span>
             {link.url && <span className={styles['link-url']}>{link.url}</span>}
           </div>
-          {actions}
+          {actions(link.id)}
         </div>
       )}
-      {(link.status === LinkStatus.ADDING_SUB_LINK || link.status === LinkStatus.EDITING) && (
-        <div className={styles['link-form']}>{linkForm}</div>
-      )}
+      {link.status === LinkStatus.ADDING_SUB_LINK && <div className={styles['link-form']}>{linkForm(link.id)}</div>}
+      {link.status === LinkStatus.EDITING && <div className={styles['link-form']}>{linkForm(link.id, link.label, link.url)}</div>}
       {link.subLink && <LinkElement actions={actions} className={styles['sub-link']} link={link.subLink} linkForm={linkForm} />}
     </div>
   );

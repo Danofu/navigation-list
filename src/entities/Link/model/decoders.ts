@@ -10,7 +10,7 @@ const linkDecoder = (): Decoder<Link> => object({
   id: string().uuid(),
   label: string().min(1),
   status: nativeEnum(LinkStatus).optional(),
-  subUrl: lazy(() => linkDecoder().optional()),
+  subLink: lazy(() => linkDecoder().optional()),
   url: string().optional(),
 });
 export const linksDecoder = (): Decoder<Array<Link>> => array(linkDecoder());
