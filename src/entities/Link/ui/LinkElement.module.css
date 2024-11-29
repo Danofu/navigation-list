@@ -9,12 +9,14 @@
 }
 
 .link-container {
+  grid:
+    "move-button info actions" auto
+    / auto       1fr  auto;
+
   @apply
-    flex
-    flex-row
-    justify-start
+    grid
     items-center
-    gap-1
+    gap-x-1
     px-6
     py-4
 
@@ -22,22 +24,30 @@
     border-solid
     border-border-secondary
 
+
     [&:not(:only-child)]:border-b
+
 
     [&]:only:-mb-px;
 }
 
 .move-button {
+  grid-area: move-button;
+
   @apply cursor-move;
 }
 
 .link-info {
+  grid-area: info;
+
   @apply
     flex
     flex-col
-    justify-start
+    justify-center
     items-start
-    gap-1.5;
+    gap-1.5
+
+    overflow-hidden;
 }
 
 .link-label {
@@ -51,13 +61,8 @@
   @apply
     text-sm
     text-text-tertiary
-    font-normal;
-}
-
-.link-form {
-  @apply
-    px-6
-    py-4;
+    font-normal
+    whitespace-nowrap;
 }
 
 .sub-link {
@@ -68,4 +73,10 @@
     [&>.link-container]:border-b
     [&>.link-container]:border-l
     [&>.link-container]:rounded-bl-lg;
+}
+
+.link-form {
+  @apply
+    px-6
+    py-4;
 }

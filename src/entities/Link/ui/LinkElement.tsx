@@ -28,7 +28,9 @@ function LinkElement({ actions, className, link, linkForm }: Props): React.React
             <span className={styles['link-label']}>{link.label}</span>
             {link.url && <span className={styles['link-url']}>{link.url}</span>}
           </div>
-          {actions(link.id)}
+          <div className={styles.actions}>
+            {actions(link.id)}
+          </div>
         </div>
       )}
       {link.status === LinkStatus.ADDING_SUB_LINK && <div className={styles['link-form']}>{linkForm(link.id)}</div>}
