@@ -38,7 +38,7 @@ function LinkList({ deleteItem, items, updateItem }: Props): React.ReactElement 
       if (link.status === 'ADDING_SUB_LINK') {
         return {
           ...link,
-          subLink: { id: uuid(), label: values.name, url: values.url, subLink: link.subLink },
+          subLink: { id: uuid(), label: values.name, url: values.url, subLink: link.subLink, order: 0 },
           status: undefined,
         };
       }
@@ -70,9 +70,22 @@ function LinkList({ deleteItem, items, updateItem }: Props): React.ReactElement 
     />
   );
 
+  const sortedItems = items.toSorted((linkA, linkB) => {
+    if (!linkA.order && !linkB.order) {
+      return 0;
+    }
+    if (!linkA.order) {
+      return 1;
+    }
+    if (!linkB.order) {
+      return -1;
+    }
+    return linkA.order > linkB.order ? -1 : 1;
+  });
+
   return (
     <div className={styles.container}>
-      {items.map((link) => (
+      {sortedItems.map((link) => (
         <LinkElement actions={linkElementActionsWithId} key={link.id} link={link} linkForm={linkFormWithValues} />
       ))}
       <LinkListActions />

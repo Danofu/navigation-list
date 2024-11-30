@@ -2,7 +2,6 @@ interface Link {
   id: string;
   label: string;
   url?: string | undefined;
-  subLink?: Link | undefined;
 }
 
 enum LinkStatus {
