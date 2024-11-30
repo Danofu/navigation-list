@@ -33,12 +33,20 @@ function LinkList({ deleteItem, items, updateItem }: Props): React.ReactElement 
 
   const deleteLinkHandler = (id: string) => (): void => deleteItem(id);
 
+  const reorderLinkHandler = (sourceLink: Link, targetLink: Link): void => {
+    // source is root link and target is root link
+    if (sourceLink.order !== null && targetLink.order !== null) {
+      updateItem(sourceLink.id, (link) => ({ ...link, order: targetLink.order }));
+      updateItem(targetLink.id, (link) => ({ ...link, order: sourceLink.order }));
+    }
+  };
+
   const linkFormSubmitHandler = (id: string) => (values: LinkFormValues): void => (
     updateItem(id, (link) => {
       if (link.status === 'ADDING_SUB_LINK') {
         return {
           ...link,
-          subLink: { id: uuid(), label: values.name, url: values.url, subLink: link.subLink, order: 0 },
+          subLink: { id: uuid(), label: values.name, url: values.url, subLink: link.subLink, order: null },
           status: undefined,
         };
       }
@@ -86,7 +94,13 @@ function LinkList({ deleteItem, items, updateItem }: Props): React.ReactElement 
   return (
     <div className={styles.container}>
       {sortedItems.map((link) => (
-        <LinkElement actions={linkElementActionsWithId} key={link.id} link={link} linkForm={linkFormWithValues} />
+        <LinkElement
+          actions={linkElementActionsWithId}
+          key={link.id}
+          link={link}
+          linkForm={linkFormWithValues}
+          onReorder={reorderLinkHandler}
+        />
       ))}
       <LinkListActions />
     </div>

@@ -13,7 +13,7 @@ type LinkActions = {
 
 const createLinkActions: StateCreator<LinkState & LinkActions, [], [], LinkActions> = (set) => ({
   addLink: (label, url, parentId) => set((state) => {
-    const createNewLink = (order: number, subLink?: Link): Link => ({ id: uuid(), label, subLink, url, order });
+    const createNewLink = (order: number | null, subLink?: Link): Link => ({ id: uuid(), label, subLink, url, order });
     if (!parentId) {
       const updatedLinks = [...state.links, createNewLink(state.links.length)];
       localStorage.setItem('links', JSON.stringify(updatedLinks));
@@ -22,7 +22,7 @@ const createLinkActions: StateCreator<LinkState & LinkActions, [], [], LinkActio
 
     const recursivelyAddLink = (links: Array<Link>): Array<Link> => links.map((link) => {
       if (link.id === parentId) {
-        return { ...link, subLink: createNewLink(0, link.subLink) };
+        return { ...link, subLink: createNewLink(null, link.subLink) };
       }
       if (link.subLink) {
         return { ...link, subLink: recursivelyAddLink([link.subLink])[0] };

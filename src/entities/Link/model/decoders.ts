@@ -9,7 +9,7 @@ type Link = LinkState['links'][number];
 const linkDecoder = (): Decoder<Link> => object({
   id: string().uuid(),
   label: string().min(1),
-  order: number(),
+  order: number().nullable(),
   status: nativeEnum(LinkStatus).optional(),
   subLink: lazy(() => linkDecoder().optional()),
   url: string().optional(),

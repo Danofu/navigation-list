@@ -2,7 +2,7 @@ import Link, { LinkStatus } from '@/entities/Link/model/Link';
 
 type LinkState = {
   links: Array<Link & {
-    order: number;
+    order: number | null;
     status?: LinkStatus;
     subLink?: LinkState['links'][number];
   }>;

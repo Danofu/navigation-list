@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import LinkList from '@/app/components/LinkList';
 import { useStore } from '@/app/providers/StoreProvider';
@@ -12,9 +14,11 @@ function LinksPage(): React.ReactElement {
   const deleteLink = useStore((state) => state.deleteLink);
 
   return (
-    <div className={styles.root}>
-      <LinkList deleteItem={deleteLink} items={links} updateItem={updateLink} />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className={styles.root}>
+        <LinkList deleteItem={deleteLink} items={links} updateItem={updateLink} />
+      </div>
+    </DndProvider>
   );
 }
 
