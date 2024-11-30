@@ -11,7 +11,7 @@ type Props = Readonly<{
 function RootLayout({ children }: Props): React.ReactElement {
   return (
     <html className={inter.variable} lang="pl">
-      <body>
+      <body className="bg-gray-100">
         <StoreProvider>
           <main className={styles.root}>
             {children}
